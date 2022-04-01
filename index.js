@@ -3,7 +3,9 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+require("dotenv").config();
 
+// Données du serveur
 app.get("/", (req, res) => {
   return res.json({
     restaurant: {
@@ -451,17 +453,6 @@ app.get("/", (req, res) => {
   });
 });
 
-// Heroku va nous fournir une variable process.env.PORT
-// if (process.env.PORT) {
-//   app.listen(process.env.PORT, () => {
-//     console.log("Server started");
-//   });
-// } else {
-//   app.listen(3200, () => {
-//     console.log("Server started");
-//   });
-// }
-
-app.listen(process.env.PORT || 3200, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server started");
 });
